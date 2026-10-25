@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alexandre José dos Santos · Engenheiro de Machine Learning</title>
+<meta name="description" content="Engenheiro de Machine Learning no Itaú Unibanco. Agentes de IA, LLMs, MLOps e IA responsável em escala corporativa — do protótipo à produção.">
+<meta property="og:title" content="Alexandre José dos Santos · Engenheiro de Machine Learning">
+<meta property="og:description" content="Agentes de IA, LLMs e MLOps em escala corporativa — do protótipo à produção.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lexanderalfabiotec-cyber.github.io/">
+<meta name="theme-color" content="#0b0f17">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f17'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='monospace' font-weight='700' font-size='30' fill='%237cf0c5'%3EAJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f8fb; --bg2:#ffffff; --fg:#0e1420; --muted:#5a6475; --line:#e3e7ee;
+  --accent:#0f9f74; --accent2:#4f6bff; --chip:#eef2f7; --glow:rgba(15,159,116,.14);
+  --shadow:0 1px 2px rgba(14,20,32,.04),0 8px 24px rgba(14,20,32,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b0f17; --bg2:#111723; --fg:#e8edf5; --muted:#93a0b4; --line:#1f2836;
+    --accent:#7cf0c5; --accent2:#8ea2ff; --chip:#161e2c; --glow:rgba(124,240,197,.10);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b0f17; --bg2:#111723; --fg:#e8edf5; --muted:#93a0b4; --line:#1f2836;
+  --accent:#7cf0c5; --accent2:#8ea2ff; --chip:#161e2c; --glow:rgba(124,240,197,.10);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--fg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+@media (max-width:600px){.wrap{padding:0 16px}}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;backdrop-filter:saturate(1.4) blur(12px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font-weight:700;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+.brand b{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:8px;background:var(--fg);color:var(--bg);font-size:12px}
+.links{display:flex;gap:26px;font-size:14px;color:var(--muted)}
+.links a:hover{color:var(--fg)}
+@media (max-width:760px){.links{display:none}}
+.icon-btn{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--bg2);color:var(--fg);display:grid;place-items:center;cursor:pointer}
+.icon-btn svg{width:18px;height:18px}
+
+/* hero */
+.hero{position:relative;padding:88px 0 72px}
+.hero::before{content:"";position:absolute;inset:-120px 0 auto 0;height:520px;background:radial-gradient(600px 300px at 75% 30%,var(--glow),transparent 70%),radial-gradient(500px 260px at 10% 10%,color-mix(in srgb,var(--accent2) 12%,transparent),transparent 70%);pointer-events:none;z-index:-1}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}.hero{padding:56px 0 48px}}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);border:1px solid var(--line);background:var(--bg2);padding:6px 12px;border-radius:999px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--glow);animation:pulse 2.4s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px transparent}}
+h1{font-size:clamp(36px,6vw,62px);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:22px 0 18px}
+h1 .grad{background:linear-gradient(100deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(16px,2vw,19px);color:var(--muted);max-width:56ch}
+.lead strong{color:var(--fg);font-weight:600}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:9px;height:46px;padding:0 20px;border-radius:12px;font-weight:600;font-size:15px;border:1px solid var(--line);background:var(--bg2);transition:transform .15s,border-color .15s}
+.btn:hover{transform:translateY(-2px);border-color:var(--accent)}
+.btn.primary{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.btn svg{width:18px;height:18px}
+
+/* agent graph */
+.graph{background:var(--bg2);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:18px}
+.graph-head{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);margin-bottom:6px}
+.graph-head span:first-child{display:flex;gap:6px}
+.graph-head i{width:10px;height:10px;border-radius:50%;background:var(--line);display:inline-block}
+.graph svg{width:100%;height:auto;display:block}
+.node rect{fill:var(--chip);stroke:var(--line)}
+.node text{fill:var(--fg);font:600 12px Inter,sans-serif}
+.node .sub{fill:var(--muted);font:500 10px "JetBrains Mono",monospace}
+.node.hl rect{stroke:var(--accent);stroke-width:1.5}
+.edge{stroke:var(--muted);stroke-opacity:.45;stroke-width:1.4;fill:none}
+.flow{stroke:var(--accent);stroke-width:2;fill:none;stroke-dasharray:6 10;animation:dash 1.6s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-32}}
+
+/* sections */
+section{padding:84px 0;border-top:1px solid var(--line)}
+@media (max-width:600px){section{padding:60px 0}}
+.kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}
+h2{font-size:clamp(28px,4vw,40px);letter-spacing:-.03em;line-height:1.15;margin:10px 0 14px;font-weight:800}
+.sub-lead{color:var(--muted);max-width:62ch;font-size:17px}
+
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:40px}
+@media (max-width:760px){.cards{grid-template-columns:1fr}}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:var(--shadow);transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
+.card .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--glow);color:var(--accent);margin-bottom:16px}
+.card .ic svg{width:22px;height:22px}
+.card h3{font-size:19px;letter-spacing:-.01em;margin-bottom:10px}
+.card ul{list-style:none;color:var(--muted);font-size:15px;display:grid;gap:8px}
+.card li{padding-left:18px;position:relative}
+.card li::before{content:"";position:absolute;left:0;top:.68em;width:7px;height:7px;border-radius:2px;background:var(--accent);opacity:.7}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.tag{font-size:12px;padding:4px 10px;border-radius:999px;background:var(--chip);border:1px solid var(--line);color:var(--fg)}
+
+/* pipeline */
+.pipe{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:44px;counter-reset:s}
+@media (max-width:900px){.pipe{grid-template-columns:1fr;gap:12px}}
+.step{position:relative;padding:22px 20px;border:1px solid var(--line);background:var(--bg2)}
+.step:first-child{border-radius:16px 0 0 16px}.step:last-child{border-radius:0 16px 16px 0}
+.step+.step{border-left:none}
+@media (max-width:900px){.step,.step:first-child,.step:last-child{border-radius:14px;border-left:1px solid var(--line)}}
+.step::before{counter-increment:s;content:"0" counter(s);font:600 12px "JetBrains Mono",monospace;color:var(--accent)}
+.step h4{font-size:16px;margin:8px 0 6px}
+.step p{font-size:14px;color:var(--muted)}
+
+/* timeline */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:40px}
+@media (max-width:860px){.split{grid-template-columns:1fr;gap:36px}}
+.tl{position:relative;padding-left:26px}
+.tl::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl-item{position:relative;padding-bottom:28px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:"";position:absolute;left:-26px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--muted)}
+.tl-item.now::before{border-color:var(--accent);background:var(--accent);box-shadow:0 0 0 5px var(--glow)}
+.tl-item h4{font-size:17px}
+.tl-item .org{color:var(--accent);font-weight:600;font-size:14px}
+.tl-item p{color:var(--muted);font-size:15px;margin-top:6px}
+.h3s{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;font-weight:600}
+
+/* principles */
+.quote{margin-top:40px;padding:30px;border-radius:18px;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 10%,var(--bg2)),var(--bg2));border:1px solid var(--line);font-size:clamp(18px,2.4vw,22px);letter-spacing:-.01em;font-weight:600}
+.quote small{display:block;margin-top:10px;font-size:14px;font-weight:500;color:var(--muted)}
+
+/* projects */
+.proj{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:40px}
+@media (max-width:760px){.proj{grid-template-columns:1fr}}
+.pcard{display:flex;flex-direction:column;gap:10px;padding:22px;border-radius:16px;border:1px solid var(--line);background:var(--bg2);transition:border-color .2s,transform .2s}
+.pcard:hover{border-color:var(--accent);transform:translateY(-2px)}
+.pcard .top{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted)}
+.pcard h4{font-family:"JetBrains Mono",monospace;font-size:15px}
+.pcard p{color:var(--muted);font-size:14px;flex:1}
+.lang{display:inline-flex;align-items:center;gap:6px}
+.lang i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.note{margin-top:18px;font-size:14px;color:var(--muted)}
+
+/* contact */
+.contact{text-align:center}
+.contact .sub-lead{margin:0 auto}
+.contact .cta{justify-content:center}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.flow,.dot{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand"><b class="mono">AJ</b>Alexandre Santos</a>
+    <div class="links">
+      <a href="#expertise">Expertise</a>
+      <a href="#abordagem">Abordagem</a>
+      <a href="#trajetoria">Trajetória</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <button class="icon-btn" id="theme" aria-label="Alternar tema">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="status"><span class="dot"></span>Engenheiro de Machine Learning · Itaú Unibanco</span>
+      <h1>Agentes de IA que saem do protótipo e <span class="grad">chegam à produção.</span></h1>
+      <p class="lead">Sou <strong>Alexandre José dos Santos</strong>. Desenvolvo agentes e sistemas multiagente que atendem diversas áreas de um dos maiores bancos da América Latina — com a <strong>robustez de quem veio da engenharia back-end</strong> e a governança que o setor financeiro exige.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://www.linkedin.com/in/alexandre-j-santos-368360174/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn
+        </a>
+        <a class="btn" href="https://github.com/lexanderalfabiotec-cyber" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>
+          GitHub
+        </a>
+        <a class="btn" href="mailto:lexander.alfa@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          E-mail
+        </a>
+      </div>
+    </div>
+
+    <div class="graph reveal" aria-label="Diagrama de uma arquitetura de agente de IA">
+      <div class="graph-head"><span><i></i><i></i><i></i></span><span class="mono">agent_graph.py</span></div>
+      <svg viewBox="0 0 420 330" role="img">
+        <!-- edges -->
+        <path class="edge" d="M210 58 V100"/>
+        <path class="edge" d="M210 140 C210 165 80 160 80 190"/>
+        <path class="edge" d="M210 140 V190"/>
+        <path class="edge" d="M210 140 C210 165 340 160 340 190"/>
+        <path class="edge" d="M80 228 C80 255 210 250 210 272"/>
+        <path class="edge" d="M210 228 V272"/>
+        <path class="edge" d="M340 228 C340 255 210 250 210 272"/>
+        <!-- animated flow -->
+        <path class="flow" d="M210 58 V100"/>
+        <path class="flow" d="M210 140 C210 165 80 160 80 190"/>
+        <path class="flow" d="M210 140 C210 165 340 160 340 190" style="animation-delay:-.6s"/>
+        <path class="flow" d="M210 228 V272" style="animation-delay:-1s"/>
+        <!-- nodes -->
+        <g class="node"><rect x="150" y="20" width="120" height="38" rx="10"/><text x="210" y="38" text-anchor="middle">Usuário / Sistema</text><text class="sub" x="210" y="51" text-anchor="middle">request</text></g>
+        <g class="node hl"><rect x="135" y="100" width="150" height="40" rx="10"/><text x="210" y="118" text-anchor="middle">Orquestrador</text><text class="sub" x="210" y="132" text-anchor="middle">LangGraph · CrewAI</text></g>
+        <g class="node"><rect x="20" y="190" width="120" height="38" rx="10"/><text x="80" y="208" text-anchor="middle">RAG</text><text class="sub" x="80" y="221" text-anchor="middle">retrieval</text></g>
+        <g class="node"><rect x="150" y="190" width="120" height="38" rx="10"/><text x="210" y="208" text-anchor="middle">Tools / MCP</text><text class="sub" x="210" y="221" text-anchor="middle">APIs corporativas</text></g>
+        <g class="node"><rect x="280" y="190" width="120" height="38" rx="10"/><text x="340" y="208" text-anchor="middle">Guardrails</text><text class="sub" x="340" y="221" text-anchor="middle">segurança</text></g>
+        <g class="node hl"><rect x="125" y="272" width="170" height="40" rx="10"/><text x="210" y="290" text-anchor="middle">Evals + Observabilidade</text><text class="sub" x="210" y="304" text-anchor="middle">custo · latência · drift</text></g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section id="expertise">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="kicker">Expertise</span>
+      <h2>Do modelo ao agente em produção.</h2>
+      <p class="sub-lead">Transformo processos complexos em soluções inteligentes, seguras e escaláveis — cobrindo todo o ciclo, da ideia à operação monitorada.</p>
+    </div>
+    <div class="cards">
+      <article class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4M8 4h8M9 14h.01M15 14h.01"/></svg></div>
+        <h3>Agentes de IA e LLMs</h3>
+        <ul>
+          <li>Agentes autônomos e sistemas multiagente</li>
+          <li>RAG, tool calling e integração com APIs e sistemas corporativos</li>
+          <li>Evals, guardrails, engenharia de prompt e fine-tuning eficiente (LoRA)</li>
+        </ul>
+        <div class="tags"><span class="tag">LangChain</span><span class="tag">LangGraph</span><span class="tag">CrewAI</span><span class="tag">MCP</span><span class="tag">LoRA</span></div>
+      </article>
+      <article class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></div>
+        <h3>Machine Learning</h3>
+        <ul>
+          <li>Ciclo completo: dados, feature engineering, treino, avaliação e deploy</li>
+          <li>Quantização e otimização de modelos para inferência</li>
+        </ul>
+        <div class="tags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">PyTorch</span><span class="tag">Hugging Face</span></div>
+      </article>
+      <article class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></div>
+        <h3>MLOps, LLMOps e Engenharia</h3>
+        <ul>
+          <li>Pipelines com CI/CD e versionamento de modelos</li>
+          <li>Observabilidade em produção: custo, latência, qualidade e drift</li>
+          <li>Arquiteturas event-driven, DDD e design de APIs</li>
+        </ul>
+        <div class="tags"><span class="tag">MLflow</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">Datadog</span><span class="tag">Prometheus</span><span class="tag">Grafana</span></div>
+      </article>
+      <article class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>IA responsável em escala corporativa</h3>
+        <ul>
+          <li>Governança e explicabilidade desde a concepção</li>
+          <li>Segurança em camadas aplicada a agentes e modelos</li>
+          <li>Documentação como requisito de produção (Doc Advocate)</li>
+        </ul>
+        <div class="tags"><span class="tag">AppSec</span><span class="tag">Governança</span><span class="tag">Explicabilidade</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="abordagem">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="kicker">Abordagem</span>
+      <h2>Como um agente chega à produção.</h2>
+      <p class="sub-lead">Um agente só gera valor quando é confiável, mensurável e auditável. É assim que estruturo cada entrega.</p>
+    </div>
+    <div class="pipe reveal">
+      <div class="step"><h4>Problema</h4><p>Entender o processo, os riscos e a métrica de sucesso antes do código.</p></div>
+      <div class="step"><h4>Protótipo</h4><p>Orquestração, RAG e ferramentas validados rapidamente com casos reais.</p></div>
+      <div class="step"><h4>Evals</h4><p>Conjuntos de avaliação e guardrails para medir qualidade e segurança.</p></div>
+      <div class="step"><h4>Produção</h4><p>CI/CD, containers, versionamento e integração com sistemas do banco.</p></div>
+      <div class="step"><h4>Operação</h4><p>Observabilidade de custo, latência, qualidade e drift — e melhoria contínua.</p></div>
+    </div>
+    <div class="quote reveal">“Agente sem documentação não escala nem passa em auditoria.”<small>— meu princípio como Doc Advocate</small></div>
+  </div>
+</section>
+
+<section id="trajetoria">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="kicker">Trajetória</span>
+      <h2>Engenharia de software como base, IA como foco.</h2>
+    </div>
+    <div class="split">
+      <div class="reveal">
+        <div class="h3s">Experiência</div>
+        <div class="tl">
+          <div class="tl-item now">
+            <h4>Engenheiro de Machine Learning</h4>
+            <div class="org">Itaú Unibanco · atual</div>
+            <p>Desenvolvimento de agentes de IA que atendem diversas áreas do banco, do protótipo à produção, com foco em segurança, escala e observabilidade.</p>
+          </div>
+          <div class="tl-item">
+            <h4>Engenheiro de Machine Learning — Investimentos</h4>
+            <div class="org">Itaú Unibanco</div>
+            <p>Soluções de IA voltadas ao segmento de investimentos.</p>
+          </div>
+          <div class="tl-item">
+            <h4>Engenheiro de Software Back-End</h4>
+            <div class="org">Base técnica</div>
+            <p>APIs, arquiteturas event-driven e DDD com Python e .NET em cloud — a fundação que dá robustez às soluções de IA.</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="h3s">Formação e certificações</div>
+        <div class="tl">
+          <div class="tl-item now">
+            <h4>Graduação em Inteligência Artificial</h4>
+            <div class="org">UNICID · 2026</div>
+            <p>Formação dedicada a IA, aprendizado de máquina e aplicações de IA generativa.</p>
+          </div>
+          <div class="tl-item">
+            <h4>Application Security — Segurança em Camadas de Software</h4>
+            <div class="org">CECyber · 2026</div>
+            <p>Segurança aplicada ao desenvolvimento, base para agentes seguros desde a concepção.</p>
+          </div>
+        </div>
+        <div class="h3s" style="margin-top:36px">Linguagens</div>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Go</span><span class="tag">.NET / C#</span><span class="tag">Rust</span><span class="tag">JavaScript</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projetos">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="kicker">Projetos públicos</span>
+      <h2>Estudos e experimentos.</h2>
+      <p class="sub-lead">Grande parte do meu trabalho acontece em repositórios corporativos privados. Aqui ficam projetos pessoais e de estudo.</p>
+    </div>
+    <div class="proj">
+      <a class="pcard reveal" href="https://github.com/lexanderalfabiotec-cyber/cadastro_usuario_csv" target="_blank" rel="noopener">
+        <div class="top"><span class="lang"><i style="background:#f1e05a"></i>JavaScript</span><span>↗</span></div>
+        <h4>cadastro_usuario_csv</h4>
+        <p>Cadastro de usuários com exportação em CSV, construído com Spec-Driven Development (OpenSpec) e desenvolvimento assistido por IA.</p>
+        <div class="tags"><span class="tag">openspec</span><span class="tag">spec-driven</span><span class="tag">ai-assisted</span></div>
+      </a>
+      <a class="pcard reveal" href="https://github.com/lexanderalfabiotec-cyber/api_go_projeto_dio" target="_blank" rel="noopener">
+        <div class="top"><span class="lang"><i style="background:#00ADD8"></i>Go</span><span>↗</span></div>
+        <h4>api_go_projeto_dio</h4>
+        <p>API em Go com estrutura cmd/internal e configuração via YAML.</p>
+        <div class="tags"><span class="tag">go</span><span class="tag">api</span><span class="tag">backend</span></div>
+      </a>
+      <a class="pcard reveal" href="https://github.com/lexanderalfabiotec-cyber/estudos-ia-notebooklm" target="_blank" rel="noopener">
+        <div class="top"><span class="lang"><i style="background:var(--accent)"></i>IA Generativa</span><span>↗</span></div>
+        <h4>estudos-ia-notebooklm</h4>
+        <p>Miniguia de estudos sobre finanças pessoais gerado com IA generativa (NotebookLM) a partir de fontes curadas.</p>
+        <div class="tags"><span class="tag">notebooklm</span><span class="tag">llm</span></div>
+      </a>
+      <a class="pcard reveal" href="https://github.com/lexanderalfabiotec-cyber/math_lib_rust_alfa" target="_blank" rel="noopener">
+        <div class="top"><span class="lang"><i style="background:#dea584"></i>Rust</span><span>↗</span></div>
+        <h4>math_lib_rust_alfa</h4>
+        <p>Biblioteca (crate) de operações aritméticas em Rust, com licença dupla MIT/Apache-2.0.</p>
+        <div class="tags"><span class="tag">rust</span><span class="tag">crate</span></div>
+      </a>
+    </div>
+    <p class="note reveal">Veja todos no <a href="https://github.com/lexanderalfabiotec-cyber" style="color:var(--accent)" target="_blank" rel="noopener">GitHub →</a></p>
+  </div>
+</section>
+
+<section id="contato" class="contact">
+  <div class="wrap reveal">
+    <span class="kicker">Contato</span>
+    <h2>Vamos conversar?</h2>
+    <p class="sub-lead">Aberto a conversas sobre agentes de IA, LLMOps e engenharia de ML em escala.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://www.linkedin.com/in/alexandre-j-santos-368360174/" target="_blank" rel="noopener">Conectar no LinkedIn</a>
+      <a class="btn" href="mailto:lexander.alfa@gmail.com">lexander.alfa@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="y"></span> Alexandre José dos Santos</span>
+    <span class="mono">São Paulo, Brasil</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('theme');
+  try{var t=localStorage.getItem('theme'); if(t) root.setAttribute('data-theme',t);}catch(e){}
+  btn.addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+    var next=cur==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+  });
+  document.getElementById('y').textContent=new Date().getFullYear();
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+    els.forEach(function(el){io.observe(el)});
+  } else els.forEach(function(el){el.classList.add('in')});
+})();
+</script>
+</body>
+</html>
